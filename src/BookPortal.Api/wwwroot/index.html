@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Biblioteca Digital</title>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#catalog">Pular para o catalogo</a>
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <div class="brand" aria-label="Biblioteca Digital">
+          <span class="brand__mark" aria-hidden="true">BD</span>
+          <span>
+            <strong>Biblioteca Digital</strong>
+            <small>Acervo publico de leitura</small>
+          </span>
+        </div>
+
+        <nav class="topnav" aria-label="Principal">
+          <a href="#catalog">Catalogo</a>
+          <a href="#shelves">Prateleiras</a>
+          <a href="#loans">Emprestimos</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="masthead" aria-labelledby="page-title">
+        <div class="masthead__copy">
+          <p class="eyebrow">Biblioteca digital</p>
+          <h1 id="page-title">Encontre livros para ler, estudar e compartilhar em sala.</h1>
+          <p class="masthead__meta">
+            <span id="bookCount">0 obras</span>
+            <span id="availableCount">0 disponiveis</span>
+            <span id="categoryCount">0 categorias</span>
+          </p>
+        </div>
+
+        <form class="search-panel" id="searchForm" aria-label="Busca de obras">
+          <label class="field field--wide" for="searchInput">
+            <span>Buscar</span>
+            <input id="searchInput" name="q" type="search" placeholder="Titulo, autor ou tema" autocomplete="off" />
+          </label>
+
+          <label class="field" for="categorySelect">
+            <span>Categoria</span>
+            <select id="categorySelect" name="category">
+              <option value="">Todas</option>
+            </select>
+          </label>
+
+          <label class="field" for="formatSelect">
+            <span>Formato</span>
+            <select id="formatSelect" name="format">
+              <option value="">Todos</option>
+              <option value="E-book">E-book</option>
+              <option value="PDF">PDF</option>
+            </select>
+          </label>
+
+          <label class="checkline">
+            <input id="availableOnly" type="checkbox" />
+            <span>Disponiveis</span>
+          </label>
+
+          <button class="button button--primary" type="submit">Buscar</button>
+          <button class="button button--ghost" id="clearFilters" type="button">Limpar</button>
+        </form>
+      </section>
+
+      <section class="content-grid" id="catalog">
+        <div class="section-heading">
+          <p class="eyebrow">Catalogo</p>
+          <h2>Obras em destaque</h2>
+        </div>
+        <div class="book-grid" id="bookGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="shelves" id="shelves">
+        <div class="section-heading">
+          <p class="eyebrow">Prateleiras</p>
+          <h2>Curadorias</h2>
+        </div>
+        <div id="shelfList" class="shelf-list"></div>
+      </section>
+
+      <section class="loan-area" id="loans">
+        <div class="section-heading">
+          <p class="eyebrow">Emprestimos</p>
+          <h2>Consulta rapida</h2>
+        </div>
+
+        <form class="loan-lookup" id="loanLookupForm">
+          <label class="field" for="loanDocument">
+            <span>Documento</span>
+            <input id="loanDocument" type="text" placeholder="CPF ou matricula" />
+          </label>
+          <button class="button button--primary" type="submit">Consultar</button>
+        </form>
+
+        <div id="loanList" class="loan-list" aria-live="polite"></div>
+      </section>
+    </main>
+
+    <dialog class="book-dialog" id="bookDialog">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="Fechar">x</button>
+      <div id="dialogBody"></div>
+    </dialog>
+
+    <template id="bookCardTemplate">
+      <article class="book-card">
+        <div class="book-cover" aria-hidden="true">
+          <span class="book-cover__title"></span>
+          <span class="book-cover__author"></span>
+        </div>
+        <div class="book-card__body">
+          <p class="book-card__category"></p>
+          <h3></h3>
+          <p class="book-card__author"></p>
+          <p class="book-card__description"></p>
+          <div class="book-card__footer">
+            <span class="availability"></span>
+            <button class="button button--small" type="button">Detalhes</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="/assets/js/app.js"></script>
+  </body>
+</html>
+

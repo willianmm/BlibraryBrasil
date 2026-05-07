@@ -1,0 +1,36 @@
+@BookPortal_Api_HostAddress = http://localhost:5066
+
+GET {{BookPortal_Api_HostAddress}}/api/health
+Accept: application/json
+
+###
+
+GET {{BookPortal_Api_HostAddress}}/api/catalog
+Accept: application/json
+
+###
+
+GET {{BookPortal_Api_HostAddress}}/api/catalog?category=Literatura%20Brasileira&available=true
+Accept: application/json
+
+###
+
+GET {{BookPortal_Api_HostAddress}}/api/shelves
+Accept: application/json
+
+###
+
+POST {{BookPortal_Api_HostAddress}}/api/loans
+Content-Type: application/json
+
+{
+  "bookId": "21e577bf-b81c-42f6-8d7a-19b908d4d503",
+  "userDocument": "00011122233",
+  "userName": "Usuario Teste"
+}
+
+###
+
+GET {{BookPortal_Api_HostAddress}}/api/users/00011122233/loans
+Accept: application/json
+
